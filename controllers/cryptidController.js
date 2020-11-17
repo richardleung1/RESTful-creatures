@@ -33,5 +33,19 @@ cryptidRouter.post('/', (req, res) => {
     res.redirect('/cryptids')
 })
 
+cryptidRouter.get('/search/:searchTerm', (req, res) => {
+    const rawcryptids = fs.readFileSync('./cryptids.json')
+    const cryptids = JSON.parse(rawcryptids)
+    const searchTerm = req.params.searchTerm
+
+    const filteredCryptids = cryptids.filter((cryptid) => cryptid.name.toLowerCase() === searchTerm.toLowerCase())
+  
+    console.log(searchTerm);
+    console.log(cryptids);
+    console.log(filteredCryptids);
+  
+    res.render('cryptids/index', { cryptids: filteredCryptids })
+})
+
 module.exports = cryptidRouter
 
