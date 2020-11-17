@@ -10,11 +10,13 @@ dinoRouter.get('/', (req, res) => {
 })
 
 dinoRouter.get('/:id', (req, res) => {
-    const rawDinos = fs.readFileSync('./dinosaurs.json');
-    const dinos = JSON.parse(rawDinos);
-    const id = parseInt(req.params.id)
+    const rawDinos = fs.readFileSync('./dinosaurs.json')
+    const dinos = JSON.parse(rawDinos)
+    const id = parseInt(req.params.id) - 1
     const dino = dinos[id]
+  
     res.render('dinosaurs/show', { dino })
-})
+  })
+  
 
 module.exports = dinoRouter
