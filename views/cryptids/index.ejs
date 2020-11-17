@@ -1,3 +1,8 @@
+<form method="GET" action="/dinosaurs">
+  <label for="nameFilter">Filter by Name</label>
+  <input id="nameFilter" type="text" name="nameFilter">
+  <input type="submit">
+</form>
 <ul>
     <% cryptids.forEach((cryptid) => { %>
         <li>Here is the <%= cryptid.name %> !</li>
